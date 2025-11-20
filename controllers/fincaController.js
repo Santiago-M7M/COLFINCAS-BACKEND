@@ -29,9 +29,10 @@ export const createFinca = async (req, res) => {
         res.status(201).json({ message: 'Finca creada correctamente', id: result.insertId });
 
     } catch (error) {
-        console.error("❌ Error en createFinca:", error);
-        res.status(500).json({ message: 'Error al crear la finca', error });
+        console.error("ERROR AL GUARDAR FOTO:", error.sqlMessage || error.message || error);
+        res.status(500).json({ message: "Error al guardar la imagen en BD", error });
     }
+
 };
 
 
